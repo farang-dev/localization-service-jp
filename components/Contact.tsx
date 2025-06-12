@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -11,7 +10,6 @@ import { Mail, CreditCard, User, Building, Briefcase, MessageSquare } from 'luci
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -85,7 +83,7 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Ready to take your product to the Japanese market? Let's discuss your project.
+            Ready to take your product to the Japanese market? Let&apos;s discuss your project.
           </motion.p>
         </div>
 
@@ -212,7 +210,7 @@ const Contact = () => {
                     <div className="ml-3">
                       <p className="text-sm font-medium text-foreground">Email</p>
                       <p className="text-sm text-muted-foreground">hello@japaneselocalization.com</p>
-                      <p className="text-sm text-muted-foreground mt-1">I'll respond within 24 hours during business days.</p>
+                      <p className="text-sm text-muted-foreground mt-1">I&apos;ll respond within 24 hours during business days.</p>
                     </div>
                   </div>
                 </div>

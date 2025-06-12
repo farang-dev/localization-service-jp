@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { MessageSquare, Code, Globe, Lightbulb } from 'lucide-react';
+import { MessageSquare, Globe, Lightbulb } from 'lucide-react';
 
 const features = [
   {
