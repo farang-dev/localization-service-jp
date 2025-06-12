@@ -84,7 +84,7 @@ const ServicePlans = () => {
           </motion.p>
         </div>
 
-        <div className="mt-12 space-y-4 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-1 sm:gap-6 lg:max-w-5xl lg:mx-auto xl:max-w-none xl:grid-cols-3">
+        <div className="mt-12 space-y-4 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:max-w-none lg:mx-auto">
           {servicePlans.map((plan, index) => (
             <motion.div
               key={plan.name}
