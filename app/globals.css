@@ -1,8 +1,91 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Silver Palette (Cool Gray) */
+  --silver-50: oklch(0.98 0.003 240); /* #f8f9fa */
+  --silver-100: oklch(0.95 0.006 240); /* #e9ecef */
+  --silver-200: oklch(0.90 0.01 240); /* #dee2e6 */
+  --silver-300: oklch(0.82 0.015 240); /* #ced4da */
+  --silver-400: oklch(0.70 0.02 240); /* #adb5bd */
+  --silver-500: oklch(0.55 0.022 240); /* #6c757d */
+  --silver-600: oklch(0.45 0.02 240); /* #495057 */
+  --silver-700: oklch(0.35 0.018 240); /* #343a40 */
+  --silver-800: oklch(0.25 0.015 240); /* #212529 */
+  --silver-900: oklch(0.18 0.01 240); /* #121416 */
+  --silver-950: oklch(0.10 0.005 240); /* #08090a */
+
+  /* Purple Palette */
+  --purple-50: oklch(0.96 0.03 290); /* #f3e8ff */
+  --purple-100: oklch(0.92 0.06 290); /* #e9d5ff */
+  --purple-200: oklch(0.85 0.1 290); /* #d8b4fe */
+  --purple-300: oklch(0.78 0.15 290); /* #c084fc */
+  --purple-400: oklch(0.70 0.2 290); /* #a855f7 */
+  --purple-500: oklch(0.62 0.24 290); /* #9333ea */
+  --purple-600: oklch(0.55 0.22 290); /* #7e22ce */
+  --purple-700: oklch(0.48 0.19 290); /* #6b21a8 */
+  --purple-800: oklch(0.40 0.16 290); /* #581c87 */
+  --purple-900: oklch(0.32 0.13 290); /* #441568 */
+  --purple-950: oklch(0.25 0.1 290); /* #2e0e4b */
+
+  /* Blue Palette */
+  --blue-50: oklch(0.95 0.03 230); /* #eff6ff */
+  --blue-100: oklch(0.90 0.06 230); /* #dbeafe */
+  --blue-200: oklch(0.82 0.1 230); /* #bfdbfe */
+  --blue-300: oklch(0.72 0.15 230); /* #93c5fd */
+  --blue-400: oklch(0.62 0.2 230); /* #60a5fa */
+  --blue-500: oklch(0.55 0.24 230); /* #3b82f6 */
+  --blue-600: oklch(0.48 0.22 230); /* #2563eb */
+  --blue-700: oklch(0.40 0.19 230); /* #1d4ed8 */
+  --blue-800: oklch(0.32 0.16 230); /* #1e40af */
+  --blue-900: oklch(0.25 0.13 230); /* #1e3a8a */
+  --blue-950: oklch(0.18 0.1 230); /* #172554 */
+  
+  --radius: 0.75rem; /* Slightly larger radius for a modern feel */
+
+  /* Light Mode Theme */
+  --background: var(--silver-50);
+  --foreground: var(--silver-800);
+  --card: var(--silver-100); /* Lighter card background */
+  --card-foreground: var(--silver-800);
+  --popover: var(--silver-100); /* Lighter popover background */
+  --popover-foreground: var(--silver-800);
+  
+  --primary: var(--purple-600);
+  --primary-foreground: var(--silver-50);
+  
+  --secondary: var(--blue-600);
+  --secondary-foreground: var(--silver-50);
+  
+  --muted: var(--silver-100); /* Lighter muted background */
+  --muted-foreground: var(--silver-500); /* Adjusted for contrast */
+  
+  --accent: var(--purple-100);
+  --accent-foreground: var(--purple-700);
+  
+  --destructive: oklch(0.55 0.25 25); /* A modern, slightly desaturated red */
+  --destructive-foreground: var(--silver-50);
+  
+  --border: var(--silver-200); /* Lighter border */
+  --input: var(--silver-100);  /* Lighter input background, distinct from card */
+  --ring: var(--purple-500);
+
+  --chart-1: var(--purple-500);
+  --chart-2: var(--blue-500);
+  --chart-3: oklch(0.65 0.18 180); /* Teal */
+  --chart-4: oklch(0.75 0.22 45); /* Orange */
+  --chart-5: oklch(0.70 0.20 330); /* Pink */
+
+  --sidebar: var(--silver-100);
+  --sidebar-foreground: var(--silver-700);
+  --sidebar-primary: var(--purple-600);
+  --sidebar-primary-foreground: var(--silver-50);
+  --sidebar-accent: var(--purple-200);
+  --sidebar-accent-foreground: var(--purple-700);
+  --sidebar-border: var(--silver-200); /* Lighter sidebar border */
+  --sidebar-ring: var(--purple-500);
 }
 
 @theme inline {
@@ -10,17 +93,120 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Slightly thinner scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: var(--silver-100); /* Light silver track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--purple-400); /* Purple thumb */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--purple-500); /* Darker purple on hover */
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Custom scrollbar for dark mode needs to be defined within .dark or use variables that change with mode */
+
+.dark {
+  /* Dark Mode Theme */
+  --background: var(--silver-900);
+  --foreground: var(--silver-200);
+  --card: var(--purple-950); /* Changed from silver-800 to dark purple */
+  --card-foreground: var(--silver-100); /* Adjusted for new card background */
+  --popover: var(--purple-950); /* Changed from silver-800 to dark purple */
+  --popover-foreground: var(--silver-100); /* Adjusted for new popover background */
+  
+  --primary: var(--purple-500);
+  --primary-foreground: var(--silver-100);
+  
+  --secondary: var(--blue-500);
+  --secondary-foreground: var(--silver-100);
+  
+  --muted: var(--purple-900); /* Changed from silver-800 to a darker purple */
+  --muted-foreground: var(--silver-300); /* Adjusted for new muted background */
+  
+  --accent: var(--purple-800);
+  --accent-foreground: var(--purple-200);
+  
+  --destructive: oklch(0.65 0.22 25); /* A modern, slightly desaturated red for dark mode */
+  --destructive-foreground: var(--silver-100);
+  
+  --border: var(--silver-700);
+  --input: var(--silver-800); /* Input same as card for cohesion in dark mode */
+  --ring: var(--purple-400);
+
+  --chart-1: var(--purple-400);
+  --chart-2: var(--blue-400);
+  --chart-3: oklch(0.70 0.16 180); /* Teal - dark mode */
+  --chart-4: oklch(0.80 0.20 45); /* Orange - dark mode */
+  --chart-5: oklch(0.75 0.18 330); /* Pink - dark mode */
+
+  --sidebar: var(--silver-800);
+  --sidebar-foreground: var(--silver-300);
+  --sidebar-primary: var(--purple-500);
+  --sidebar-primary-foreground: var(--silver-100);
+  --sidebar-accent: var(--purple-700);
+  --sidebar-accent-foreground: var(--purple-200);
+  --sidebar-border: var(--silver-700);
+  --sidebar-ring: var(--purple-400);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
