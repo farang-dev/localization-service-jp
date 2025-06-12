@@ -21,7 +21,7 @@ const Hero = () => {
                 className="text-3xl tracking-tight font-extrabold text-foreground sm:text-4xl md:text-5xl"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.6 }}
               >
                 <span className="block xl:inline">LLM ✖️ Human Insight</span>{' '}
                 <span className="block bg-gradient-to-r from-purple-600 via-purple-500 to-blue-600 bg-clip-text text-transparent xl:inline">Launch in Japan</span>
