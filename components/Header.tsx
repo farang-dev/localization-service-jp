@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 
 const Header = () => {
@@ -27,6 +27,7 @@ const Header = () => {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[280px] sm:w-[320px] bg-background border-l border-border pt-2">
+                <SheetTitle className="sr-only">Menu</SheetTitle>
                 <div className="flex flex-col h-full">
                   <div className="flex items-center justify-between py-3 border-b border-border">
                     <span className="text-xl font-bold bg-gradient-to-r from-purple-600 via-purple-500 to-blue-600 bg-clip-text text-transparent">
