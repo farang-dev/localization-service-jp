@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { FileText, Globe, Layers } from 'lucide-react';
+import { FileText, Globe, Layers, LayoutGrid } from 'lucide-react';
 
 const services = [
   {
