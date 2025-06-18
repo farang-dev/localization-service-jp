@@ -1,9 +1,9 @@
 // app/blog/[slug]/page.tsx
 import Header from '@/components/Header';
 
-type BlogPostParams = {
+type BlogPostParams = Promise<{
   slug: string;
-}
+}>
 
 async function getPost(slug: string) {
   // TODO: Fetch individual post from WordPress API using the slug
@@ -15,7 +15,7 @@ async function getPost(slug: string) {
 }
 
 // Generate static params for all blog posts
-export async function generateStaticParams(): Promise<BlogPostParams[]> {
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
   // In a real app, you would fetch all post slugs from your CMS
   // For now, return some dummy slugs
   return [
@@ -26,13 +26,12 @@ export async function generateStaticParams(): Promise<BlogPostParams[]> {
 }
 
 export default async function BlogPostPage({ 
-  params,
-  searchParams,
+  params
 }: { 
   params: BlogPostParams;
-  searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-  const post = await getPost(params.slug);
+  const { slug } = await params;
+  const post = await getPost(slug);
 
   return (
     <>
