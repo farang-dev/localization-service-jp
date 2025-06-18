@@ -1,13 +1,8 @@
 // app/blog/[slug]/page.tsx
 import Header from '@/components/Header';
 
-interface BlogPostParams {
+type BlogPostParams = {
   slug: string;
-}
-
-interface BlogPostProps {
-  params: BlogPostParams;
-  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
 async function getPost(slug: string) {
@@ -30,7 +25,13 @@ export async function generateStaticParams(): Promise<BlogPostParams[]> {
   ];
 }
 
-export default async function BlogPostPage({ params }: BlogPostProps) {
+export default async function BlogPostPage({ 
+  params,
+  searchParams,
+}: { 
+  params: BlogPostParams;
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) {
   const post = await getPost(params.slug);
 
   return (
