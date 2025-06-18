@@ -1,5 +1,14 @@
 // app/blog/[slug]/page.tsx
 import Header from '@/components/Header';
+import { Metadata } from 'next';
+
+interface BlogPostParams {
+  slug: string;
+}
+
+interface BlogPostProps {
+  params: BlogPostParams;
+}
 
 async function getPost(slug: string) {
   // TODO: Fetch individual post from WordPress API using the slug
@@ -10,7 +19,18 @@ async function getPost(slug: string) {
   };
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+// Generate static params for all blog posts
+export async function generateStaticParams(): Promise<BlogPostParams[]> {
+  // In a real app, you would fetch all post slugs from your CMS
+  // For now, return some dummy slugs
+  return [
+    { slug: 'first-post' },
+    { slug: 'second-post' },
+    { slug: 'third-post' },
+  ];
+}
+
+export default async function BlogPostPage({ params }: BlogPostProps) {
   const post = await getPost(params.slug);
 
   return (
