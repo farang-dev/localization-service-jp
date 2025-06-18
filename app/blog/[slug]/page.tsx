@@ -7,6 +7,7 @@ interface BlogPostParams {
 
 interface BlogPostProps {
   params: BlogPostParams;
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
 async function getPost(slug: string) {
