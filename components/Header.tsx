@@ -1,11 +1,17 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetClose } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 
 const Header = () => {
+  const [open, setOpen] = useState(false);
+  
+  const handleLinkClick = () => {
+    setOpen(false);
+  };
   return (
     <header className="fixed w-full bg-background/90 backdrop-blur-md z-50 shadow-sm border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,7 +25,7 @@ const Header = () => {
           </div>
           
           <div className="md:hidden">
-            <Sheet>
+            <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="h-10 w-10 text-foreground hover:bg-accent hover:text-accent-foreground">
                   <Menu className="h-5 w-5" />
@@ -35,37 +41,60 @@ const Header = () => {
                     </span>
                   </div>
                   <nav className="flex flex-col space-y-2 mt-6">
-                    <Link
-                      href="/"
-                      className="px-3 py-2 text-sm font-medium text-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
-                    >
-                      Home
-                    </Link>
-                    <Link
-                      href="/#services"
-                      className="px-3 py-2 text-sm font-medium text-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
-                    >
-                      Services
-                    </Link>
-                    <Link
-                      href="/#contact"
-                      className="px-3 py-2 text-sm font-medium text-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
-                    >
-                      Contact
-                    </Link>
-                    <Link
-                      href="/blog"
-                      className="px-3 py-2 text-sm font-medium text-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
-                    >
-                      Blog
-                    </Link>
+                    <SheetClose asChild>
+                      <Link
+                        href="/"
+                        className="px-3 py-2 text-sm font-medium text-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
+                        onClick={handleLinkClick}
+                      >
+                        Home
+                      </Link>
+                    </SheetClose>
+                    <SheetClose asChild>
+                      <Link
+                        href="/#services"
+                        className="px-3 py-2 text-sm font-medium text-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
+                        onClick={handleLinkClick}
+                      >
+                        Services
+                      </Link>
+                    </SheetClose>
+                    <SheetClose asChild>
+                      <Link
+                        href="/#pricing"
+                        className="px-3 py-2 text-sm font-medium text-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
+                        onClick={handleLinkClick}
+                      >
+                        Pricing
+                      </Link>
+                    </SheetClose>
+                    <SheetClose asChild>
+                      <Link
+                        href="/#contact"
+                        className="px-3 py-2 text-sm font-medium text-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
+                        onClick={handleLinkClick}
+                      >
+                        Contact
+                      </Link>
+                    </SheetClose>
+                    <SheetClose asChild>
+                      <Link
+                        href="/blog"
+                        className="px-3 py-2 text-sm font-medium text-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
+                        onClick={handleLinkClick}
+                      >
+                        Blog
+                      </Link>
+                    </SheetClose>
                   </nav>
                   <div className="mt-auto pb-8 px-4">
-                    <Button asChild variant="gradient" className="w-full text-white text-sm">
-                      <Link href="/#contact" className="px-3 py-2">
-                        Get Started
-                      </Link>
-                    </Button>
+                    <SheetClose asChild>
+                      <Button asChild variant="gradient" className="w-full text-white text-sm">
+                        <Link href="/#contact" className="px-3 py-2" onClick={handleLinkClick}>
+                          Get Started
+                        </Link>
+                      </Button>
+                    </SheetClose>
                   </div>
                 </div>
               </SheetContent>
@@ -79,6 +108,9 @@ const Header = () => {
             <Link href="/#services" className="text-base font-medium text-foreground hover:text-purple-500 transition-colors">
               Services
             </Link>
+            <Link href="/#pricing" className="text-base font-medium text-foreground hover:text-purple-500 transition-colors">
+              Pricing
+            </Link>
             <Link href="/#contact" className="text-base font-medium text-foreground hover:text-purple-500 transition-colors">
               Contact
             </Link>
@@ -87,7 +119,12 @@ const Header = () => {
             </Link>
           </nav>
           
-          <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+          <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-4">
+            <Button asChild variant="outline" className="text-foreground">
+              <Link href="/#pricing">
+                View Pricing
+              </Link>
+            </Button>
             <Button asChild variant="gradient" className="text-white">
               <Link href="/#contact">
                 Get Started
