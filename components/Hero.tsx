@@ -35,7 +35,7 @@ const Hero = () => {
                 Our team of experts ensures your content resonates with Japanese users while maintaining your brand&apos;s voice.
               </motion.p>
               <motion.div 
-                className="mt-6 sm:mt-10 sm:flex sm:justify-center lg:justify-start gap-4"
+                className="mt-6 sm:mt-10 flex justify-start sm:justify-center lg:justify-start gap-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
@@ -45,7 +45,7 @@ const Hero = () => {
                     View Pricing
                   </Link>
                 </Button>
-                <Button asChild variant="outline" className="mt-3 sm:mt-0 sm:ml-3 border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white">
+                <Button asChild variant="outline" className="border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white">
                   <Link href="/#contact" className="px-8 py-3 md:py-4 md:text-lg md:px-10">
                     Contact Us
                   </Link>
