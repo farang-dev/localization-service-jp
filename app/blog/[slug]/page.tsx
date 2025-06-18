@@ -1,6 +1,5 @@
 // app/blog/[slug]/page.tsx
 import Header from '@/components/Header';
-import { Metadata } from 'next';
 
 interface BlogPostParams {
   slug: string;
