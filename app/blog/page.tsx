@@ -1,64 +1,46 @@
-// app/blog/page.tsx
-import Link from 'next/link';
+import React from 'react';
 import Header from '@/components/Header';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import Footer from '@/components/Footer';
 
-interface Post {
-  slug: string;
-  title: string;
-  excerpt: string; // Added for card content
-}
+import { Post } from '@/lib/types';
 
-async function getPosts(): Promise<Post[]> {
-  // TODO: Fetch posts from WordPress API
-  // Remember to include excerpt in your API response
-  console.log('Fetching posts from:', process.env.WORDPRESS_API_URL);
-  console.log('Using Client ID:', process.env.WORDPRESS_CLIENT_ID);
-  // IMPORTANT: Never log Client Secret in production or shared logs
-  // console.log('Using Client Secret:', process.env.WORDPRESS_CLIENT_SECRET);
+import { getPosts } from '@/lib/wordpress';
 
-  // For now, return some dummy data
-  return [
-    { slug: 'first-post', title: 'My First Blog Post', excerpt: 'This is a short summary of the first blog post...' },
-    { slug: 'second-post', title: 'Another Interesting Article', excerpt: 'A brief look into another fascinating topic discussed in this article.' },
-    { slug: 'third-post', title: 'Exploring New Horizons', excerpt: 'Discover the latest advancements and explorations in this exciting field.' },
-  ];
-}
-
-export default async function BlogPage() {
-  const posts = await getPosts();
+const BlogPage = async () => {
+  const posts: Post[] = await getPosts();
 
   return (
     <>
       <Header />
-      <div className="container mx-auto px-4 py-12 pt-24">
-      <h1 className="text-4xl font-bold mb-10 text-center">Our Blog</h1>
-      {posts.length === 0 ? (
-        <p className="text-center text-muted-foreground">No blog posts found. Check back soon!</p>
-      ) : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {posts.map((post) => (
-            <Card key={post.slug} className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <CardHeader>
-                <CardTitle className="text-xl hover:text-primary transition-colors">
-                  <Link href={`/blog/${post.slug}`}>
-                    {post.title}
-                  </Link>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                <CardDescription className="text-muted-foreground mb-4">
-                  {post.excerpt}
-                </CardDescription>
-                <Link href={`/blog/${post.slug}`} className="text-sm text-primary hover:underline font-medium">
-                  Read More &rarr;
-                </Link>
-              </CardContent>
-            </Card>
-          ))}
+      <main className="max-w-4xl mx-auto px-4 py-8 pt-24">
+        <h1 className="text-4xl font-bold mb-8 text-center">Blog</h1>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {posts.length > 0 ? (
+            posts.map(post => (
+              <div key={post.id} className="border rounded-lg p-4 flex flex-col">
+                <a href={`/blog/${post.slug}`} rel="noopener noreferrer">
+                  <h2 
+                    className="text-xl font-semibold mb-2 hover:underline"
+                    dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+                  />
+                </a>
+                <div 
+                  className="text-gray-600 text-sm mb-4 flex-grow"
+                  dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
+                />
+                <a href={`/blog/${post.slug}`} className="text-blue-500 hover:underline self-end">
+                  Read more
+                </a>
+              </div>
+            ))
+          ) : (
+            <p>No posts available.</p>
+          )}
         </div>
-      )}
-    </div>
+      </main>
+      <Footer />
     </>
   );
-}
+};
+
+export default BlogPage;

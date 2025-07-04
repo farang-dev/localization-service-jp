@@ -120,11 +120,7 @@ const Header = () => {
           </nav>
           
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-4">
-            <Button asChild variant="outline" className="text-foreground">
-              <Link href="/#pricing">
-                View Pricing
-              </Link>
-            </Button>
+
             <Button asChild variant="gradient" className="text-white">
               <Link href="/#contact">
                 Get Started
