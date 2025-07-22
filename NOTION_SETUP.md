@@ -39,11 +39,23 @@ NOTION_PAGE_ID=your_actual_page_id
 
 ## 5. Create Blog Posts
 
-1. In your blog container page, create child pages
-2. Each child page will become a blog post
-3. The page title becomes the blog post title
-4. The page content becomes the blog post content
-5. Supported content types:
+**IMPORTANT: New pages must be added as child pages (sub-pages) under your main blog container page.**
+
+### How to Add a New Blog Post:
+
+1. **Open your main blog container page** (the one with the PAGE_ID you configured)
+2. **Inside this page**, click the "+" button or type "/page" to create a new page
+3. **Give the page a title** - this becomes your blog post title
+4. **Add content** to the page - this becomes your blog post content
+5. **Make sure the page appears as a sub-page** under your main container page
+
+### Verification Steps:
+
+- Your main blog page should show the new pages as indented sub-pages
+- The URL structure should be: `notion.so/Main-Blog-Page-ID/New-Post-Title-ID`
+- If you see your new page at the same level as the main blog page, it's NOT a child page
+
+### Supported Content Types:
    - Paragraphs
    - Headings (H1, H2, H3)
    - Bullet lists
@@ -51,6 +63,12 @@ NOTION_PAGE_ID=your_actual_page_id
    - Quotes
    - Code blocks
    - Dividers
+
+### Troubleshooting:
+
+- **New posts not showing?** Make sure they are child pages, not sibling pages
+- **Permission errors?** Re-share the main page with your integration
+- **Still not working?** Check the server logs for detailed error messages
 
 ## 6. Test the Integration
 
