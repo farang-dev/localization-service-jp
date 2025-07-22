@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import '@/app/notion.css';
 
 import { getPost, getAllPostSlugs } from '@/lib/notion';
 
@@ -85,7 +86,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             dangerouslySetInnerHTML={{ __html: post.title.rendered }}
           />
           <div 
-            className="prose lg:prose-xl max-w-none"
+            className="prose lg:prose-xl max-w-none notion-content"
             dangerouslySetInnerHTML={{ __html: post.content.rendered }}
           />
         </article>
