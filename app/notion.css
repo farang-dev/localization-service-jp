@@ -35,14 +35,21 @@
 }
 
 /* Lists */
-.notion-content ul,
+.notion-content ul {
+  list-style-type: disc;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
 .notion-content ol {
+  list-style-type: decimal;
   margin-bottom: 1rem;
   padding-left: 1.5rem;
 }
 
 .notion-content li {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
+  display: list-item;
 }
 
 /* Quotes */

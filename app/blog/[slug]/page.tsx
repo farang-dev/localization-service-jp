@@ -86,7 +86,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             dangerouslySetInnerHTML={{ __html: post.title.rendered }}
           />
           <div 
-            className="prose lg:prose-xl max-w-none notion-content"
+            className="prose prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-ul:list-disc prose-ol:list-decimal max-w-none notion-content"
             dangerouslySetInnerHTML={{ __html: post.content.rendered }}
           />
         </article>
