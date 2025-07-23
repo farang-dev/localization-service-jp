@@ -84,9 +84,9 @@ function hello() {
       <main className="max-w-4xl mx-auto px-4 py-8 pt-24">
         <h1 className="text-4xl font-bold mb-8">Test Page for Notion Styling</h1>
         <div 
-          className="prose prose-headings:font-bold prose-h1:text-xl prose-h2:text-lg prose-h3:text-base prose-ul:list-disc prose-ol:list-decimal notion-content"
-          dangerouslySetInnerHTML={{ __html: testContent }}
-        />
+            className="prose prose-headings:font-bold prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-ul:list-disc prose-ol:list-decimal notion-content"
+            dangerouslySetInnerHTML={{ __html: testContent }}
+          />
       </main>
       <Footer />
     </>
