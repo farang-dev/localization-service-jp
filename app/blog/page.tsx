@@ -46,7 +46,7 @@ const BlogPage = async () => {
                   />
                 </Link>
                 <div 
-                  className="text-gray-600 text-base mb-6 flex-grow line-clamp-4 prose prose-headings:font-bold prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-ul:list-disc prose-ol:list-decimal notion-content"
+                  className="text-gray-600 text-base mb-6 flex-grow line-clamp-4 prose prose-headings:font-bold prose-h1:text-xl prose-h2:text-lg prose-h3:text-base prose-ul:list-disc prose-ol:list-decimal notion-content"
                   dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
                 />
                 <Link href={`/blog/${post.slug}`} className="text-blue-600 hover:text-blue-800 font-medium hover:underline self-start">
