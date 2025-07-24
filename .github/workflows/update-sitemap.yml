@@ -1,0 +1,57 @@
+name: Verify Sitemap
+
+on:
+  schedule:
+    # Run weekly on Monday at 1:00 AM UTC
+    - cron: '0 1 * * 1'
+  # Run on push to main branch
+  push:
+    branches: [ main ]
+  # Allow manual triggering
+  workflow_dispatch:
+
+jobs:
+  verify-sitemap:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build project
+        run: npm run build
+        env:
+          # Add any required environment variables here
+          WORDPRESS_API_URL: ${{ secrets.WORDPRESS_API_URL }}
+          WORDPRESS_USER: ${{ secrets.WORDPRESS_USER }}
+          WORDPRESS_APP_PASSWORD: ${{ secrets.WORDPRESS_APP_PASSWORD }}
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+      
+      - name: Verify sitemap.xml exists
+        run: |
+          # Check possible sitemap locations
+          if [ -f ".next/server/app/sitemap.xml" ]; then
+            echo "✅ Sitemap found at .next/server/app/sitemap.xml"
+            cat .next/server/app/sitemap.xml
+          elif [ -f ".next/static/sitemap.xml" ]; then
+            echo "✅ Sitemap found at .next/static/sitemap.xml"
+            cat .next/static/sitemap.xml
+          elif [ -f "public/sitemap.xml" ]; then
+            echo "✅ Sitemap found at public/sitemap.xml"
+            cat public/sitemap.xml
+          else
+            echo "❌ Sitemap not found in expected locations"
+            echo "Searching for sitemap.xml in .next directory:"
+            find .next -name "sitemap.xml" -type f || echo "No sitemap.xml found in .next directory"
+            exit 1
+          fi
