@@ -14,7 +14,7 @@ const BlogPage = async () => {
   return (
     <>
       <Header />
-      <main className="max-w-6xl mx-auto px-4 py-8 pt-24 overflow-hidden">
+      <main className="max-w-6xl mx-auto px-4 py-8 pt-24 overflow-x-hidden w-full">
         {/* Breadcrumb */}
         <nav className="mb-6">
           <ol className="flex items-center space-x-2 text-sm text-gray-600">
@@ -46,7 +46,7 @@ const BlogPage = async () => {
                   />
                 </Link>
                 <div 
-                  className="text-gray-700 text-base mb-6 flex-grow line-clamp-4 prose prose-headings:font-bold prose-h1:text-xl prose-h2:text-lg prose-h3:text-base prose-ul:list-disc prose-ol:list-decimal prose-p:text-gray-700 notion-content overflow-hidden"
+                  className="text-gray-700 text-base mb-6 flex-grow line-clamp-4 prose prose-headings:font-bold prose-h1:text-xl prose-h2:text-lg prose-h3:text-base prose-ul:list-disc prose-ol:list-decimal prose-p:text-gray-700 notion-content overflow-x-hidden w-full"
                   dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
                 />
                 <Link href={`/blog/${post.slug}`} className="text-blue-600 hover:text-blue-800 font-medium hover:underline self-start">

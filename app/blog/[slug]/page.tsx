@@ -17,7 +17,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     return (
       <>
         <Header />
-        <main className="max-w-4xl mx-auto px-4 py-8 pt-24 overflow-hidden">
+        <main className="max-w-4xl mx-auto px-4 py-8 pt-24 overflow-x-hidden w-full">
           {/* Breadcrumb */}
           <nav className="mb-6">
             <ol className="flex items-center space-x-2 text-sm text-gray-600">
@@ -75,7 +75,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
               <svg className="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
               </svg>
-              <span className="text-gray-900 truncate max-w-[150px] sm:max-w-xs" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+              <span className="text-gray-900 truncate max-w-[120px] sm:max-w-[200px] md:max-w-xs" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
             </li>
           </ol>
         </nav>
@@ -86,7 +86,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             dangerouslySetInnerHTML={{ __html: post.title.rendered }}
           />
           <div 
-            className="prose prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-ul:list-disc prose-ol:list-decimal prose-p:text-gray-700 max-w-none notion-content overflow-hidden"
+            className="prose prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-ul:list-disc prose-ol:list-decimal prose-p:text-gray-700 max-w-none notion-content overflow-x-hidden w-full"
             dangerouslySetInnerHTML={{ __html: post.content.rendered }}
           />
         </article>
