@@ -9,29 +9,31 @@
 
 /* Headings */
 .notion-content h1 {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   font-weight: 700;
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
 .notion-content h2 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 600;
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .notion-content h3 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
-  margin-top: 1.25rem;
+  margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
 
 /* Paragraphs */
 .notion-content p {
   margin-bottom: 1rem;
+  line-height: 1.6;
+  font-size: 1rem;
 }
 
 /* Lists */
